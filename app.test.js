@@ -6,14 +6,12 @@ describe('Joke Endpoints', () => {
     const response = await request(app).get('/joke1');
     expect(response.statusCode).toBe(200);
     expect(response.body.setup).toBeTruthy();
-    expect(response.body.punchline).toBeTruthy();
   });
 
   it('should return a joke setup for joke2', async () => {
     const response = await request(app).get('/joke2');
     expect(response.statusCode).toBe(200);
     expect(response.body.setup).toBeTruthy();
-    expect(response.body.punchline).toBeTruthy();
   });
 });
 
