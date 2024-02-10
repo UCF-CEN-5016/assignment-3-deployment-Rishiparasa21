@@ -89,7 +89,9 @@ app.get('/joke2', (req, res) => {
 app.get('/punchline1', (req, res) => {
   res.json({ setup: 'Why did the bicycle fall over?', punchline: 'Because it was two-tired!' });
 });
-
+app.get('/', (req, res) => {
+  res.send('Hello World!');
+});
 app.get('/punchline2', (req, res) => {
   res.json({ setup: 'What do you call fake spaghetti?', punchline: 'An impasta!!' });
 });
