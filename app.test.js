@@ -1,13 +1,32 @@
-const request = require("supertest");
-// we also need our app for the correct routes!
-const app = require("./app");
-jest.setTimeout(10000);
+const request = require('supertest');
+const app = require('./app');
 
-describe("GET / ", () => {
-  test("It should respond with an array of cities", async () => {
-    await new Promise((r) => setTimeout(r, 5000));
-    const response = await request(app).get("/cities");
-    expect(response.body).toEqual(["Orlando", "Winter Park", "Oviedo", "Maitland"]);
+describe('Joke Endpoints', () => {
+  it('should return a joke setup for joke1', async () => {
+    const response = await request(app).get('/joke1');
     expect(response.statusCode).toBe(200);
+    expect(response.body.setup).toBeTruthy();
+  });
+
+  it('should return a joke setup for joke2', async () => {
+    const response = await request(app).get('/joke2');
+    expect(response.statusCode).toBe(200);
+    expect(response.body.setup).toBeTruthy();
+  });
+});
+
+describe('Punchline Endpoints', () => {
+  it('should return both setup and punchline for punchline1', async () => {
+    const response = await request(app).get('/punchline1');
+    expect(response.statusCode).toBe(200);
+    expect(response.body.setup).toBeTruthy();
+    expect(response.body.punchline).toBeTruthy();
+  });
+
+  it('should return both setup and punchline for punchline2', async () => {
+    const response = await request(app).get('/punchline2');
+    expect(response.statusCode).toBe(200);
+    expect(response.body.setup).toBeTruthy();
+    expect(response.body.punchline).toBeTruthy();
   });
 });
